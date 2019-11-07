@@ -2,16 +2,32 @@
   <script src="jquery-3.4.1.js"></script>
 <body>
   <h1>我叫<span id="myname"></span> </h1>
-    <p>我的学号是<span id="studentnumber"></span></p>
+    <p>我的学号是<span id="mynumber"></span></p>
     <img src="1.jpg" style="border-radius:10px 20px 40px 80px">
     <img src="2.jpg" style="border-radius:10px 20px 40px 80px">
     <img id="logo" src="Koala.jpg"  style="border-radius:10px 20px 40px 80px">
     <script>
       $(function(){
-        $.get("./data.json",function(result){
+        // $.get("http://10.30.201.53:8585/data.json",function(result)
+
+        // $.post("http://10.30.201.53:8585/data.json",{name:"tom"},function(result){
+        //   $("#myname").text(result.myname);
+        //   $("#mynumber").text(result.mynumber);
+        // });
+
+        $.ajax({
+          type:"POST",
+          url:"http://10.30.201.53:8585/data.json",
+          //data:"name=uuuyo",默认表单提交方式时的data写法
+          contentType:"application/json",
+          data:{
+            "name":"uuuyo"
+          },
+          success:function(result){
           $("#myname").text(result.myname);
-          $("#studentnumber").text(result.studentnumber);
-        });
+          $("#mynumber").text(result.mynumber);
+        }
+        })
       })
     </script>
 </body>

@@ -20,6 +20,9 @@
 
             $.ajax({
                 type:"POST",
+                xhrFields:{
+                   withCredentials:true
+                },
                 url:"http://10.30.201.53:8585/login",
                 //data:"name=uuuyo",默认表单提交方式时的data写法
                 contentType:"application/json",
